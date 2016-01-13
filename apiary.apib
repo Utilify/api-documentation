@@ -1,0 +1,25 @@
+FORMAT: 1A
+HOST: http://utilify.io/
+
+# utilify
+
+API to discover utility bills information.
+
+## Providers [/providers]
+
+### Get all Providers [GET]
+
++ Response 200 (application/json)
+
+    + Body
+    
+            [
+                {
+                    "id": "1234",
+                    "name": "Provider Name Ltd"
+                },
+                {
+                    "id": "2345",
+                    "name": "Some other provider Ltd",
+                }
+            ]
