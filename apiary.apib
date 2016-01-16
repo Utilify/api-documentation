@@ -93,3 +93,20 @@ Retrieve utility account details extracted from provider's website.
                 "documentLink": "https://utilify.io/utility/file/someUniqueDocumentId",
                 "lastPaymentAt": "2016-01-01T12:00:00.000Z"
             }
+
+## Account [/account]
+Account holds information about user account with the provider
+
+### Account balance [GET /account/balance]
+Retrieve account balance
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "money": {
+                    "amount": 100.50,
+                    "currency": "GBP"
+                }
+            }
