@@ -12,7 +12,7 @@ API to discover utility bills information.
 + Response 200 (application/json)
 
     + Body
-    
+
             [
                 {
                     "id": "1234",
@@ -23,3 +23,41 @@ API to discover utility bills information.
                     "name": "Some other provider Ltd",
                 }
             ]
+
+## Utility [/utility]
+
+### Scrape for a new utility [POST]
+
++ Request
+
+    + Body
+          {
+            "firstname": "Joe",
+            "lastname": "Doe",
+            "address": "6 Nowhere Close, Nowherenear, Nowherenearshire, N01 0PE"
+          }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /utility/1
+    + Body
+
+            {
+              "id": 1,
+              "createdAt": "2016-04-23T18:25:43.511Z",
+              "firstname": "Joe",
+              "middlename": "",
+              "lastname": "Doe",
+              "address": {
+                "line1": "6 Nowhere Close",
+                "line2": "",
+                "line3": "",
+                "line4": "",
+                "city": "Nowherenear",
+                "county": "Nowherenearshire",
+                "postcode": "N01 0PE",
+                "country": "UK"
+              }
+            }
