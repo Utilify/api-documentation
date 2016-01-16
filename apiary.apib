@@ -6,8 +6,10 @@ HOST: http://api.utilify.io/
 API to discover utility bills information.
 
 ## Providers [/providers]
+Utilify's provider list with scraping capabilities
 
 ### Get a list of available Providers [GET]
+Retrieve list
 
 + Response 200 (application/json)
 
@@ -16,28 +18,33 @@ API to discover utility bills information.
             [
                 {
                     "id": "1234",
-                    "name": "Provider Name Ltd"
+                    "name": "Provider Name Ltd",
+                    "link": "https://utlify.io/providers/provider-name"
                 },
                 {
                     "id": "2345",
                     "name": "Some other provider Ltd",
+                    "link": "https://utilify.io/providers/some-other-provider"
                 }
             ]
 
 ## Utility [/utility]
+Resource with account details scraped from provider's website
 
-### Scrape for a utility for a provider [POST]
-
+### Scrape provider for utility details [POST]
+Initiate a scrape for a specific provider by posting user login details
+needed
 + Request (application/json)
 
     + Body
-          {
-            "providerId": "someproviderid"
-            "providerLoginDetails":{
-              "username": "joedoe",
-              "password": "superduperlongdifficultpassword"
+    
+            {
+                "providerId": "someproviderid"
+                "providerLoginDetails":{
+                    "username": "joedoe",
+                    "password": "superduperlongdifficultpassword"
+                }
             }
-          }
 
 + Response 201 (application/json)
 
@@ -50,4 +57,38 @@ API to discover utility bills information.
               "id": "e10ac2cd-f9e9-4215-9ee1-feac80ba4f92",
               "createdAt": "2016-04-23T18:25:43.511Z",
               "link": "https://utlify.io/utlity/e10ac2cd-f9e9-4215-9ee1-feac80ba4f92"
+            }
+            
+
+
+
+### Get utility details [GET /utility/{id}]
+Retrieve utility details scraped from a utility provider.
+
++ Parameters 
+    + id (uuid) - Id reference for the utility details
++ Response 200 (application/json)
+    
+    + Body
+    
+            {
+                "providerId": "someOtherProviderId",
+                "customerName": {
+                    "firstName": "Nope",
+                    "middleName": "NotMe",
+                    "lastName": "Noone"
+                },
+                "customerAddress": {
+                    "line1": "6 Nowhere Close",
+                    "line2": "",
+                    "line3": "",
+                    "line4": "",
+                    "city": "Nowhere",
+                    "county": "NowhereShire",
+                    "postcode": "N00 0PE",
+                    "country": "UK"
+                },
+                "accountReference": "someUniqueAccountReference",
+                "documentLink": "https://utilify.io/utility/file/someUniqueDocumentId",
+                "lastPaymentAt": "2016-01-01T12:00:00.000Z",
             }
