@@ -12,7 +12,7 @@ API to discover utility bills information.
 + Response 200 (application/json)
 
     + Body
-    
+
             [
                 {
                     "id": "1234",
@@ -23,3 +23,31 @@ API to discover utility bills information.
                     "name": "Some other provider Ltd",
                 }
             ]
+
+## Utility [/utility]
+
+### Scrape for a new utility [POST]
+
++ Request (application/json)
+
+    + Body
+          {
+            "providerId": "someproviderid"
+            "providerLoginDetails":{
+              "username": "joedoe",
+              "password": "superduperlongdifficultpassword"
+            }
+          }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /utility/e10ac2cd-f9e9-4215-9ee1-feac80ba4f92
+    + Body
+
+            {
+              "id": "e10ac2cd-f9e9-4215-9ee1-feac80ba4f92",
+              "createdAt": "2016-04-23T18:25:43.511Z",
+              "link": "https://utlify.io/utlity/e10ac2cd-f9e9-4215-9ee1-feac80ba4f92"
+            }
