@@ -6,7 +6,7 @@ HOST: http://api.utilify.io/
 API to discover utility bills information.
 
 ## Providers [/providers]
-Utilify's provider list with scraping capabilities
+List of providers that Utilify can extract information
 
 ### Get a list of available Providers [GET]
 Retrieve list
@@ -29,11 +29,11 @@ Retrieve list
             ]
 
 ## Utility [/utility]
-Resource with account details scraped from provider's website
+Utility contains account details extracted from provider's website
 
 ### Scrape provider for utility details [POST]
-Initiate a scrape for a specific provider by posting user login details
-needed
+Posting user's login details for specific providers initiates data extraction
+
 + Request (application/json)
 
     + Body
@@ -63,10 +63,11 @@ needed
 
 
 ### Get utility details [GET /utility/{id}]
-Retrieve utility details scraped from a utility provider.
+Retrieve utility account details extracted from provider's website.
 
 + Parameters 
     + id (uuid) - Id reference for the utility details
+    
 + Response 200 (application/json)
     
     + Body
@@ -90,5 +91,5 @@ Retrieve utility details scraped from a utility provider.
                 },
                 "accountReference": "someUniqueAccountReference",
                 "documentLink": "https://utilify.io/utility/file/someUniqueDocumentId",
-                "lastPaymentAt": "2016-01-01T12:00:00.000Z",
+                "lastPaymentAt": "2016-01-01T12:00:00.000Z"
             }
