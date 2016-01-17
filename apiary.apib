@@ -19,12 +19,14 @@ Retrieve list
                 {
                     "id": "1234",
                     "name": "Provider Name Ltd",
-                    "link": "https://utlify.io/providers/provider-name"
+                    "link": "https://utlify.io/providers/provider-name",
+                    "status": "online"
                 },
                 {
                     "id": "2345",
                     "name": "Some other provider Ltd",
-                    "link": "https://utilify.io/providers/some-other-provider"
+                    "link": "https://utilify.io/providers/some-other-provider",
+                    "status": "offline"
                 }
             ]
 
@@ -46,7 +48,7 @@ Posting user's login details for specific providers initiates data extraction
                 }
             }
 
-+ Response 201 (application/json)
++ Response 202 (application/json)
 
     + Headers
 
