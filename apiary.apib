@@ -18,15 +18,43 @@ Retrieve list
             [
                 {
                     "id": "1234",
-                    "name": "Provider Name Ltd",
-                    "link": "https://utlify.io/providers/provider-name",
-                    "status": "online"
+                    "name": "eon",
+                    "url": "https://www.eonenergy.com",
+                    "logoUrl": "https://somecontentresourcehost.com/imageurl", 
+                    "status": "online",
+                    "fields": [
+                        {
+                            "name": "username", 
+                            "type": "string",
+                            "caption": "Username",
+                            "description": "email address or account number"
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "caption": "Password",
+                            "description": ""
+                    ]
                 },
                 {
                     "id": "2345",
-                    "name": "Some other provider Ltd",
-                    "link": "https://utilify.io/providers/some-other-provider",
-                    "status": "offline"
+                    "name": "scottishpower",
+                    "url": "https://www.scottishpower.co.uk",
+                    "logoUrl": "https://somecontentresourcehost.com/imageurl", 
+                    "status": "offline",
+                    "fields": [
+                        {
+                            "name": "username", 
+                            "type": "string",
+                            "caption": "Username",
+                            "description": "email address or account number"
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "caption": "Password",
+                            "description": ""
+                    ]
                 }
             ]
 
@@ -34,7 +62,9 @@ Retrieve list
 Utility contains account details extracted from provider's website
 
 ### Scrape provider for utility details [POST]
-Posting user's login details for specific providers initiates data extraction
+Posting user's login details for specific providers initiates data extraction. 
+metadata: Key-value store of custom data. Up to 3 keys are permitted, 
+with key names up to 50 characters and values up to 500 characters.
 
 + Request (application/json)
 
@@ -42,10 +72,12 @@ Posting user's login details for specific providers initiates data extraction
     
             {
                 "providerId": "someproviderid"
-                "providerLoginDetails":{
+                "fields":{
                     "username": "joedoe",
                     "password": "superduperlongdifficultpassword"
-                }
+                },
+                "webhookUrl": "https://myspecialdomain.com/webhookurl",
+                "metadata": []
             }
 
 + Response 202 (application/json)
